@@ -13,6 +13,5 @@ install: true
 script: mvn clean package docker:build -DskipTests
 
 after_success:
-  - docker build -t mp/currencyConverter .
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push mp/currencyConverter
+  - docker push mihir83in/currencyConverter

@@ -144,7 +144,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
-                    <imageName>mp:currencyConverter</imageName>
+                    <imageName>mihir83in/currencyConverter</imageName>
                     <dockerDirectory>.</dockerDirectory>
                     <resources>
                         <resource>
