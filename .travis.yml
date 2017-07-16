@@ -10,7 +10,7 @@ services:
 
 install: true
 
-script: mvn clean package -DskipTests
+script: mvn clean package docker:build -DskipTests
 
 after_success:
   - docker build -t mp/currencyConverter .
