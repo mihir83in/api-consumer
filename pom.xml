@@ -151,8 +151,7 @@
                     </imageTags>
                     <pushImageTag>true</pushImageTag>
                     <registryUrl>registry.hub.docker.com</registryUrl>
-                    <imageName>mihir83in/currencyconverter</imageName>
-                    <newName>registry.hub.docker.com/mihir83in/currencyconverter</newName>
+                    <imageName>registry.hub.docker.com/mihir83in/currencyconverter</imageName>
                     <dockerDirectory>.</dockerDirectory>
                     <resources>
                         <resource>
