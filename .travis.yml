@@ -10,7 +10,7 @@ services:
 
 install: true
 
-script: mvn clean package docker:build -DskipTests -e
+script: mvn clean package docker:build -DskipTests
 
 after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
