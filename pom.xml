@@ -146,6 +146,9 @@
                 <configuration>
                     <serverId>docker-hub</serverId>
                     <pushImage>true</pushImage>
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
                     <imageName>mihir83in/currencyconverter</imageName>
                     <dockerDirectory>.</dockerDirectory>
                     <resources>
