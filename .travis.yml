@@ -17,5 +17,5 @@ after_success:
   - docker push mihir83in/currencyconverter
   - docker logout
   - docker login -e="$HEROKU_EMAIL" -u="$HEROKU_USERNAME" -p="$HEROKU_PASSWORD" registry.heroku.com
-  - docker tag mihir83in/currencyconverter registry.heroku.com/mihir83in/currencyconv/web
-  - docker push registry.heroku.com/mihir83in/currencyconv/web
+  - docker tag mihir83in/currencyconverter registry.heroku.com/currencyconv/web
+  - docker push registry.heroku.com/currencyconv/web
