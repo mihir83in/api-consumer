@@ -145,6 +145,7 @@
                 <version>1.0.0</version>
                 <configuration>
                     <imageName>mp:currencyConverter</imageName>
+                    <dockerDirectory>.</dockerDirectory>
                     <resources>
                         <resource>
                             <directory>${project.build.directory}</directory>
