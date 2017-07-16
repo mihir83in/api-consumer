@@ -15,3 +15,6 @@ script: mvn clean package docker:build -DskipTests
 after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker push mihir83in/currencyconverter
+  - docker logout
+  - docker login -e="$HEROKU_EMAIL" -u="$HEROKU_USERNAME" -p="$HEROKU_PASSWORD" registry.heroku.com
+  - docker push mihir83in/currencyconverter
