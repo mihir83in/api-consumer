@@ -21,8 +21,6 @@ public class CountryValidatorTest {
     @Test
     public void isValid() throws Exception {
 
-        //assertTrue(target.isValid("England", null));
-        System.out.println(Calendar.getInstance().get(Calendar.YEAR));
     }
 
 }
