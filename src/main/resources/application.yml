@@ -4,6 +4,9 @@ feign:
   hystrix:
     enabled: false
 
+server:
+  port: ${PORT:8080}
+
 spring:
   cache:
     cache-names: currencies
