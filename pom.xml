@@ -150,8 +150,8 @@
                         <imageTag>latest</imageTag>
                     </imageTags>
                     <pushImageTag>true</pushImageTag>
-                    <registryUrl>registry.hub.docker.com/mihir83in</registryUrl>
-                    <imageName>currencyconverter/apiconsumer</imageName>
+                    <registryUrl>registry.hub.docker.com</registryUrl>
+                    <imageName>mihir83in/currencyconverter</imageName>
                     <dockerDirectory>.</dockerDirectory>
                     <resources>
                         <resource>
