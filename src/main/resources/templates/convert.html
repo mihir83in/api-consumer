@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Currency Converter</title>
+</head>
+<body>
+<h3>
+    Currency Converter
+</h3>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Log out"/>
+</form>
+<form action="#" th:action="@{/convert}" th:object="${conversionData}" method="post" onsubmit="return validateForm()">
+    <table>
+        <tr>
+            <td>amount:</td>
+            <td><input type="number" th:field="*{amount}" step="any" min="0" max="99999999999999999999"/></td>
+            <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Amount Error</td>
+        </tr>
+        <tr>
+            <td>From:</td>
+            <td>
+                <select name="from" th:field="*{from}">
+                    <option th:each="item : ${currencies}" th:value="${item.name}"
+                            th:text="${item.displayName}">
+                    </option>
+                </select>
+            </td>
+            <td th:if="${#fields.hasErrors('from')}" th:errors="*{from}">To Error</td>
+        </tr>
+        <tr>
+            <td>To:</td>
+            <td>
+                <select name="to" th:field="*{to}">
+                    <option th:each="item : ${currencies}" th:value="${item.name}"
+                            th:text="${item.displayName}">
+                    </option>
+                </select>
+            </td>
+            <td th:if="${#fields.hasErrors('to')}" th:errors="*{to}">To Error</td>
+        </tr>
+        <tr>
+            <td>
+                <div id="date_label">
+                    Date:
+                </div>
+            </td>
+            <td>
+                <input type="date" th:field="*{date}" th:value="${{#dates.createNow()}}"/>
+            </td>
+            <td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">To Error</td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+    </table>
+    <h2>
+        Result:<span th:text="${{result?.value}}"/>&nbsp;
+        Rate:<span th:text="${{result?.rate}}"/>
+    </h2>
+</form>
+<span th:text="${error}"></span>
+<h3>Recent Queries</h3>
+<table border="1">
+    <tr>
+        <td>From</td>
+        <td>To</td>
+        <td>Amount</td>
+        <td>Result</td>
+        <td>Rate</td>
+        <td>On Date</td>
+    </tr>
+    <tr th:each="item : ${recentQueries}">
+        <td th:text="${{item.from}}">From Currency</td>
+        <td th:text="${{item.to}}">To Currency</td>
+        <td th:text="${{item.amount}}">Amount</td>
+        <td th:text="${{item.result}}">Result</td>
+        <td th:text="${{item.rate}}">Rate</td>
+        <td th:text="${{item.date}}">Date</td>
+    </tr>
+</table>
+</body>
+</html>
