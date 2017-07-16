@@ -151,7 +151,7 @@
                     </imageTags>
                     <pushImageTag>true</pushImageTag>
                     <registryUrl>registry.hub.docker.com/mihir83in</registryUrl>
-                    <imageName>currencyconverter/apiConsumer</imageName>
+                    <imageName>currencyconverter/apiconsumer</imageName>
                     <dockerDirectory>.</dockerDirectory>
                     <resources>
                         <resource>
