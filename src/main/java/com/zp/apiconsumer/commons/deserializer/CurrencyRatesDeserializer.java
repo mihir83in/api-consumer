@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.Map;
 
+
 public class CurrencyRatesDeserializer extends JsonDeserializer<CurrencyRates> {
 
     @Override

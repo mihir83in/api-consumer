@@ -1,21 +1,18 @@
 package com.zp.apiconsumer.services;
 
+import com.zp.apiconsumer.client.CurrencyClient;
 import com.zp.apiconsumer.commons.Currency;
 import com.zp.apiconsumer.commons.model.api.CurrencyList;
 import com.zp.apiconsumer.commons.model.api.CurrencyRates;
-import com.zp.apiconsumer.currencylayer.client.CurrencyClient;
 import com.zp.apiconsumer.exception.ApiConsumerException;
 import com.zp.apiconsumer.loadbalancer.CurrencyClientLoadBalancer;
 import com.zp.apiconsumer.loadbalancer.LoadBalancerStats;
-import com.zp.apiconsumer.persistence.model.CurrencyConvertQuery;
-import com.zp.apiconsumer.persistence.repository.CurrencyConvertQueryRepository;
 import org.springframework.boot.actuate.metrics.dropwizard.DropwizardMetricServices;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
-import java.util.List;
 
 @Service
 public class CurrencyConverterService {
@@ -24,16 +21,16 @@ public class CurrencyConverterService {
     private CurrencyClientLoadBalancer currencyClientLoadBalancer;
     private DropwizardMetricServices metricServices;
     private final String symbols = Currency.stringify();
-    private CurrencyConvertQueryRepository queryRepository;
+
 
     public CurrencyConverterService(CurrencyClientLoadBalancer currencyClientLoadBalancer,
-                                    CurrencyConvertQueryRepository queryRepository, DropwizardMetricServices metricServices) {
+            DropwizardMetricServices metricServices) {
 
         this.currencyClientLoadBalancer = currencyClientLoadBalancer;
         this.metricServices = metricServices;
         this.loadBalancerStats = new LoadBalancerStats();
-        this.queryRepository = queryRepository;
     }
+
 
     @Retryable
     public CurrencyList getSupportedCurrencies() {
@@ -48,11 +45,13 @@ public class CurrencyConverterService {
         return supportedCurrencies;
     }
 
+
     @Retryable
     public CurrencyRates getHistoricalRates(String date) {
 
         return getHistoricalRates(date, symbols);
     }
+
 
     @Retryable
     @Cacheable(cacheNames = "currencies", unless = "#result == null")
@@ -61,6 +60,7 @@ public class CurrencyConverterService {
         return getHistoricalRates(date, from.toString() + "," + to.toString());
     }
 
+
     @Retryable
     @Cacheable(cacheNames = "currencies", unless = "#result == null")
     public CurrencyRates getLatestRates() {
@@ -68,19 +68,14 @@ public class CurrencyConverterService {
         return getLatestRates(symbols);
     }
 
+
     @Retryable
     @Cacheable(cacheNames = "currencies", unless = "#result == null")
     public CurrencyRates getLatestRates(Currency from, Currency to) {
+
         return getLatestRates(from.toString() + "," + to.toString());
     }
 
-    public void saveQuery(CurrencyConvertQuery query) {
-        queryRepository.save(query);
-    }
-
-    public List<CurrencyConvertQuery> getLast10Queries() {
-        return queryRepository.findFirst10ByOrderByCreatedDesc();
-    }
 
     private CurrencyRates getHistoricalRates(String date, String symbols) {
 
@@ -95,7 +90,9 @@ public class CurrencyConverterService {
         return historicalRates;
     }
 
+
     private CurrencyRates getLatestRates(String symbols) {
+
         StopWatch stopWatch = startStopWatch();
 
         CurrencyClient client = getClient();
@@ -107,11 +104,14 @@ public class CurrencyConverterService {
         return latestRates;
     }
 
+
     private void throwUp(CurrencyRates currencyRates) {
+
         if (currencyRates.getErrorResponse() != null) {
             throw new ApiConsumerException(currencyRates.getErrorResponse().toString());
         }
     }
+
 
     private StopWatch startStopWatch() {
 
@@ -121,11 +121,15 @@ public class CurrencyConverterService {
         return stopWatch;
     }
 
+
     private String getTimedMetricPrefix(CurrencyClient currencyClient) {
+
         return "timer." + currencyClient.getClientName();
     }
 
+
     private CurrencyClient getClient() {
+
         return currencyClientLoadBalancer.getClient(loadBalancerStats);
     }
 }

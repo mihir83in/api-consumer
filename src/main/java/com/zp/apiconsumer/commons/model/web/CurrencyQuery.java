@@ -2,20 +2,19 @@ package com.zp.apiconsumer.commons.model.web;
 
 import com.zp.apiconsumer.commons.Currency;
 import com.zp.apiconsumer.constants.Constants;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@ToString
 public class CurrencyQuery {
 
     private Currency from;

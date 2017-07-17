@@ -10,12 +10,13 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target({TYPE, ANNOTATION_TYPE})
+
+@Target({ TYPE, ANNOTATION_TYPE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = FieldMatchValidator.class)
 @Documented
-public @interface FieldMatch
-{
+public @interface FieldMatch {
+
     String message() default "{constraints.fieldmatch}";
 
     Class<?>[] groups() default {};
@@ -37,11 +38,10 @@ public @interface FieldMatch
      *
      * @see FieldMatch
      */
-    @Target({TYPE, ANNOTATION_TYPE})
+    @Target({ TYPE, ANNOTATION_TYPE })
     @Retention(RUNTIME)
-    @Documented
-    @interface List
-    {
+    @Documented @interface List {
+
         FieldMatch[] value();
     }
 }

@@ -1,12 +1,13 @@
 package com.zp.apiconsumer.loadbalancer.rules;
 
-import com.zp.apiconsumer.currencylayer.client.CurrencyClient;
+import com.zp.apiconsumer.client.CurrencyClient;
 import com.zp.apiconsumer.loadbalancer.LoadBalancerStats;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
+
 
 @Component
 public class RandomLoadBalancerRule implements LoadBalancerRule {

@@ -17,19 +17,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.util.Optional;
 
+
 @Controller
 @Slf4j
 public class UserController {
-
 
     private CurrencyUserService currencyUserService;
     private ModelConverter modelConverter;
 
 
     public UserController(CurrencyUserService currencyUserService, ModelConverter modelConverter) {
+
         this.currencyUserService = currencyUserService;
         this.modelConverter = modelConverter;
     }
+
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("currencyUser") CurrencyUserRegistrationForm currencyUser
@@ -48,6 +50,7 @@ public class UserController {
         return "redirect:/login";
     }
 
+
     @GetMapping(value = "/register")
     public String registration(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
 
@@ -60,7 +63,9 @@ public class UserController {
         return "registration";
     }
 
+
     private void addAttributes(Model model) {
+
         model.addAttribute("countries", Countries.getInstance().values());
     }
 }

@@ -1,6 +1,11 @@
 package com.zp.apiconsumer.commons.model.api;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 
 @Getter
 @Setter
@@ -8,6 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class ErrorResponse {
+
     private int code;
     private String message;
 }

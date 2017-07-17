@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+
 @Component
 public class ModelConverter {
 
@@ -32,6 +33,7 @@ public class ModelConverter {
 
     }
 
+
     public CurrencyConvertQuery toCurrencyConvertQuery(CurrencyConversionForm form) {
 
         CurrencyConvertQuery query = new CurrencyConvertQuery();
@@ -44,6 +46,7 @@ public class ModelConverter {
 
         return query;
     }
+
 
     public CurrencyQuery toCurrencyQuery(CurrencyConvertQuery query) {
 

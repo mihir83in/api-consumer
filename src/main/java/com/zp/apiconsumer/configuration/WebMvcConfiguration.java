@@ -11,14 +11,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 @EnableWebSecurity
 public class WebMvcConfiguration {
 
     @Configuration
     public static class CurrencyConverter extends WebSecurityConfigurerAdapter {
+
         @Override
         protected void configure(HttpSecurity http) throws Exception {
+
             http
                     .authorizeRequests()
                     .antMatchers("/login", "/register", "/error").permitAll()
@@ -34,11 +37,14 @@ public class WebMvcConfiguration {
         }
     }
 
+
     @Configuration
     @Order(1)
     public static class ManagementSecurity extends WebSecurityConfigurerAdapter {
+
         @Override
         protected void configure(HttpSecurity http) throws Exception {
+
             http.csrf().disable()
                     .antMatcher("/management/**").authorizeRequests()
                     .anyRequest().authenticated()
@@ -46,15 +52,19 @@ public class WebMvcConfiguration {
                     .httpBasic();
         }
 
+
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
             auth.inMemoryAuthentication().passwordEncoder(new PlaintextPasswordEncoder())
                     .withUser("admin").password("currencyGuy").roles("ACTUATOR");
         }
     }
 
+
     @Bean
     public PasswordEncoder passwordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
 }

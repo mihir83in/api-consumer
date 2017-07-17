@@ -1,7 +1,8 @@
-package com.zp.apiconsumer.currencylayer.client;
+package com.zp.apiconsumer.client;
 
 import com.zp.apiconsumer.commons.model.api.CurrencyList;
 import com.zp.apiconsumer.commons.model.api.CurrencyRates;
+
 
 public interface CurrencyClient {
 
@@ -12,6 +13,7 @@ public interface CurrencyClient {
     CurrencyRates getHistoricalRates(String date, String symbols);
 
     default String getClientName() {
+
         return this.getClass().getSimpleName();
     }
 }

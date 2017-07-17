@@ -4,6 +4,7 @@ import com.zp.apiconsumer.commons.Currency;
 import com.zp.apiconsumer.constants.Constants;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -12,8 +13,10 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
 @Getter
 @Setter
+@ToString
 public class CurrencyConversionForm {
 
     @NotNull(message = "From cant be null")

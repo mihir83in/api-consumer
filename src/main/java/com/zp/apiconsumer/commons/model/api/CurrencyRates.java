@@ -7,16 +7,20 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
 @JsonDeserialize(using = CurrencyRatesDeserializer.class)
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class CurrencyRates {
+
     private Map<Currency, BigDecimal> data;
     private ErrorResponse errorResponse;
 }

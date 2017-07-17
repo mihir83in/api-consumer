@@ -9,17 +9,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jmx.export.MBeanExporter;
 
+
 @Configuration
 public class MetricsConfiguration {
 
     @Bean
     @ExportMetricWriter
     MetricWriter metricWriter(MBeanExporter exporter) {
+
         return new JmxMetricWriter(exporter);
     }
 
+
     @Bean
     public MetricsEndpointMetricReader metricsEndpointMetricReader(MetricsEndpoint metricsEndpoint) {
+
         return new MetricsEndpointMetricReader(metricsEndpoint);
     }
 }

@@ -5,6 +5,7 @@ import com.zp.apiconsumer.commons.model.web.Countries;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+
 public class CountryValidator implements ConstraintValidator<Country, String> {
 
     @Override
@@ -12,8 +13,10 @@ public class CountryValidator implements ConstraintValidator<Country, String> {
 
     }
 
+
     @Override
     public boolean isValid(String country, ConstraintValidatorContext constraintValidatorContext) {
+
         return Countries.getInstance().isValid(country);
     }
 }

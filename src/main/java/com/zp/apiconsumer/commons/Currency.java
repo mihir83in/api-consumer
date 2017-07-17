@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.ArrayUtils;
 
+
 @AllArgsConstructor
 @Slf4j
 public enum Currency {
@@ -19,14 +20,19 @@ public enum Currency {
     @Getter
     private String displayName;
 
+
     public static String stringify() {
+
         return ArrayUtils.toString(Currency.values()).replace("{", "").replace("}", "");
     }
 
+
     public static Currency fromName(String name) {
+
         try {
             return Currency.valueOf(name);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return null;
         }
     }

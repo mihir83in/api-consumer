@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
 public interface CurrencyConvertQueryRepository extends JpaRepository<CurrencyConvertQuery, Long> {
+
     List<CurrencyConvertQuery> findFirst10ByOrderByCreatedDesc();
 }

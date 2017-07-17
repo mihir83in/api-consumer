@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Optional;
 
+
 @Controller
 public class ViewController {
 
-
-    @GetMapping(value = {"/login"})
+    @GetMapping(value = { "/login" })
     public String login(@AuthenticationPrincipal UserPrincipal userPrincipal) {
 
         if (Optional.ofNullable(userPrincipal).isPresent()) {
@@ -21,7 +21,8 @@ public class ViewController {
         return "login";
     }
 
-    @GetMapping(value = {"/error"})
+
+    @GetMapping(value = { "/error" })
     public String error() {
 
         return "error";

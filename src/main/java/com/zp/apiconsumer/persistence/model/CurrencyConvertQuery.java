@@ -1,13 +1,20 @@
 package com.zp.apiconsumer.persistence.model;
 
 import com.zp.apiconsumer.commons.Currency;
+import com.zp.apiconsumer.converter.CurrencyConverter;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
+
 
 @Getter
 @Setter
@@ -20,11 +27,11 @@ public class CurrencyConvertQuery {
     private Long id;
 
     @Column(nullable = false)
-    @Enumerated
+    @Convert(converter = CurrencyConverter.class)
     private Currency fromCurrency;
 
-    @Enumerated
     @Column(nullable = false)
+    @Convert(converter = CurrencyConverter.class)
     private Currency toCurrency;
 
     @Column(nullable = false)
