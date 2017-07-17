@@ -13,7 +13,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.retry.annotation.EnableRetry;
 
 
-@ComponentScan(lazyInit = true, excludeFilters = @ComponentScan.Filter(value =
+@ComponentScan(excludeFilters = @ComponentScan.Filter(value =
         { CurrencyLayerClientConfiguration.class, OxrClientConfiguration.class }, type = FilterType.ASSIGNABLE_TYPE))
 @EnableFeignClients
 @EnableRetry
