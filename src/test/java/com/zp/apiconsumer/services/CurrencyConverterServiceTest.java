@@ -1,4 +1,3 @@
-/*
 package com.zp.apiconsumer.services;
 
 import com.zp.apiconsumer.client.oxr.OxrClient;
@@ -118,4 +117,4 @@ public class CurrencyConverterServiceTest {
         when(oxrClient.getLatestRates(stringify)).thenReturn(currencyRates);
         target.getLatestRates();
     }
-}*/
+}

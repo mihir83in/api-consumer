@@ -5,8 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.retry.annotation.EnableRetry;
 
 
@@ -16,6 +15,7 @@ import org.springframework.retry.annotation.EnableRetry;
 @EnableCaching
 @EnableMetrics
 @SpringBootApplication
+@EnableFeignClients
 @EnableAutoConfiguration
 public class Application {
 

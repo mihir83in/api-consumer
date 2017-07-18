@@ -8,17 +8,19 @@ import org.springframework.web.client.RestTemplate;
 
 
 @Component
-public class CurrencyLayerTemplate implements CurrencyClient {
+public class CurrencyLayerTemplate {
 
     private RestTemplate restTemplate;
     private static final String URL = "http://apilayer.net/api";
     private static final String API_KEY = "ba5e2f04e2df614788a5f611f656e34b";
 
+
     public CurrencyLayerTemplate(RestTemplateBuilder restTemplateBuilder) {
+
         restTemplate = restTemplateBuilder.build();
     }
 
-    @Override
+
     public CurrencyList getSupportedCurrencies() {
 
         String url = URL + "list" + "?" + "access_key=" + API_KEY;
@@ -26,14 +28,13 @@ public class CurrencyLayerTemplate implements CurrencyClient {
     }
 
 
-    @Override
     public CurrencyRates getLatestRates(String currencies) {
+
         String url = URL + "live?currencies=" + currencies + "&" + "access_key=" + API_KEY;
         return restTemplate.getForEntity(url, CurrencyRates.class).getBody();
     }
 
 
-    @Override
     public CurrencyRates getHistoricalRates(String date, String currencies) {
 
         String url = URL + "historical?currencies=" + currencies + "&" + "date=" + date + "&" + "access_key=" + API_KEY;
