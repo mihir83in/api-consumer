@@ -1,3 +1,4 @@
+/*
 package com.zp.apiconsumer.client.currencylayer;
 
 import feign.RequestInterceptor;
@@ -17,3 +18,4 @@ public class CurrencyLayerClientConfiguration {
         return requestTemplate -> requestTemplate.query("access_key", API_KEY);
     }
 }
+*/

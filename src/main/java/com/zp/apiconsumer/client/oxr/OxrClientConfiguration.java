@@ -1,3 +1,4 @@
+/*
 package com.zp.apiconsumer.client.oxr;
 
 import feign.RequestInterceptor;
@@ -17,3 +18,4 @@ public class OxrClientConfiguration {
         return requestTemplate -> requestTemplate.query("app_id", API_KEY);
     }
 }
+*/

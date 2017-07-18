@@ -5,7 +5,7 @@ import com.zp.apiconsumer.commons.model.web.CurrencyQuery;
 import com.zp.apiconsumer.commons.model.web.CurrencyUserRegistrationForm;
 import com.zp.apiconsumer.persistence.model.CurrencyConvertQuery;
 import com.zp.apiconsumer.persistence.model.CurrencyUser;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;

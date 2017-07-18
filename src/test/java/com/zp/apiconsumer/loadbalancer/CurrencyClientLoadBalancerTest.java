@@ -1,3 +1,4 @@
+/*
 package com.zp.apiconsumer.loadbalancer;
 
 import com.google.common.collect.Lists;
@@ -71,4 +72,4 @@ public class CurrencyClientLoadBalancerTest {
         verify(loadBalancerRule).choose(anyList(), eq(loadBalancerStats));
     }
 
-}
+}*/

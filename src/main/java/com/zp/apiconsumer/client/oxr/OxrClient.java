@@ -1,3 +1,4 @@
+/*
 package com.zp.apiconsumer.client.oxr;
 
 import com.codahale.metrics.annotation.Timed;
@@ -35,3 +36,4 @@ public interface OxrClient extends CurrencyClient {
         return "oxrClient";
     }
 }
+*/

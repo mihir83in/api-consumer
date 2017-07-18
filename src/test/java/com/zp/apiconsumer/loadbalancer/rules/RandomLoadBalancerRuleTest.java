@@ -1,3 +1,4 @@
+/*
 package com.zp.apiconsumer.loadbalancer.rules;
 
 import com.google.common.collect.Lists;
@@ -69,3 +70,4 @@ public class RandomLoadBalancerRuleTest {
     }
 
 }
+*/

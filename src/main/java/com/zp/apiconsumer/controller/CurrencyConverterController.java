@@ -10,7 +10,7 @@ import com.zp.apiconsumer.converter.ModelConverter;
 import com.zp.apiconsumer.persistence.model.CurrencyConvertQuery;
 import com.zp.apiconsumer.services.CurrencyConverterService;
 import com.zp.apiconsumer.services.CurrencyQueryService;
-import org.apache.commons.lang.time.FastDateFormat;
+import org.apache.commons.lang3.time.FastDateFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
