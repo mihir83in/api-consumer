@@ -16,9 +16,6 @@ spring:
     cache-names: currencies
     caffeine:
       spec: expireAfterWrite=30s
-  h2:
-    console:
-      enabled: true
   dataSource:
     url: jdbc:h2:mem:currency;DB_CLOSE_DELAY=-1;
 
