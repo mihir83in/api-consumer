@@ -6,6 +6,8 @@ import com.zp.apiconsumer.commons.model.api.CurrencyList;
 import com.zp.apiconsumer.commons.model.api.CurrencyRates;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -13,17 +15,20 @@ import org.springframework.web.bind.annotation.RequestParam;
         configuration = CurrencyLayerClientConfiguration.class)
 public interface CurrencyLayerClient extends CurrencyClient {
 
-    @GetMapping(value = "/list")
+    //@GetMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @Override
     @Timed(name = "timer.currencylayer.currencies", absolute = true)
     public CurrencyList getSupportedCurrencies();
 
-    @GetMapping(value = "/live?currencies={currencies}")
+    //@GetMapping(value = "/live?currencies={currencies}")
+    @RequestMapping(value = "/live?currencies={currencies}", method = RequestMethod.GET)
     @Override
     @Timed(name = "timer.currencylayer.latest", absolute = true)
     public CurrencyRates getLatestRates(@RequestParam(name = "currencies", required = false) String currencies);
 
-    @GetMapping(value = "/historical?date={date}&currencies={currencies}")
+    //@GetMapping(value = "/historical?date={date}&currencies={currencies}")
+    @RequestMapping(value = "/historical?date={date}&currencies={currencies}", method = RequestMethod.GET)
     @Override
     @Timed(name = "timer.currencylayer.historical", absolute = true)
     CurrencyRates getHistoricalRates(@RequestParam("date") String date,
