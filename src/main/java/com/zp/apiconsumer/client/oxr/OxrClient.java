@@ -7,28 +7,23 @@ import com.zp.apiconsumer.commons.model.api.CurrencyRates;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 @FeignClient(name = "oxrClient", url = "https://openexchangerates.org/api", configuration = OxrClientConfiguration.class)
 public interface OxrClient extends CurrencyClient {
 
-    //@GetMapping(value = "/currencies.json")
-    @RequestMapping(value = "/currencies.json", method = RequestMethod.GET)
+    @GetMapping(value = "/currencies.json")
     @Override
     @Timed(name = "timer.oxr.currencies", absolute = true)
     CurrencyList getSupportedCurrencies();
 
-    //@GetMapping(value = "/latest.json?symbols={symbols}")
-    @RequestMapping(value = "/latest.json?symbols={symbols}", method = RequestMethod.GET)
+    @GetMapping(value = "/latest.json?symbols={symbols}")
     @Override
     @Timed(name = "timer.oxr.latest", absolute = true)
     CurrencyRates getLatestRates(@RequestParam(name = "symbols", required = false) String symbols);
 
-    //@GetMapping(value = "/historical/{date}.json")
-    @RequestMapping(value = "/historical/{date}.json", method = RequestMethod.GET)
+    @GetMapping(value = "/historical/{date}.json")
     @Override
     @Timed(name = "timer.oxr.historical", absolute = true)
     CurrencyRates getHistoricalRates(@PathVariable("date") String date,
