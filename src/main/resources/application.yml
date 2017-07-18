@@ -4,6 +4,10 @@ feign:
   hystrix:
     enabled: false
 
+ribbon:
+  eureka:
+    enabled: false
+
 server:
   port: ${PORT:8080}
 
