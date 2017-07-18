@@ -90,7 +90,7 @@ public class CurrencyConverterController {
         }
 
         addAttributes(model);
-        return "/convert";
+        return "convert";
     }
 
 
