@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
+/**
+ * Facade that other classes use to retrieve a client from load balancer.
+ */
 @Service
 public class CurrencyClientLoadBalancer {
 
@@ -25,6 +28,12 @@ public class CurrencyClientLoadBalancer {
     }
 
 
+    /**
+     * Returns a client based on stats and Load Balancer Rule
+     *
+     * @param loadBalancerStats stats
+     * @return {@link CurrencyClient}
+     */
     public CurrencyClient getClient(LoadBalancerStats loadBalancerStats) {
 
         if (singleServer) {

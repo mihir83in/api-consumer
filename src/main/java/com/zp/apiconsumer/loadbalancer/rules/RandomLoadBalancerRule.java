@@ -9,9 +9,19 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 
+/**
+ * An implementation that randomizes client selection
+ */
 @Component
 public class RandomLoadBalancerRule implements LoadBalancerRule {
 
+    /**
+     * Chooses a client randomly making sure it wasn't the previously selected one
+     *
+     * @param converters        list of clients
+     * @param loadBalancerStats Stats that help load balancer to choose
+     * @return {@link CurrencyClient}
+     */
     @Override
     public CurrencyClient choose(List<CurrencyClient> converters, LoadBalancerStats loadBalancerStats) {
 
