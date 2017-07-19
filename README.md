@@ -41,6 +41,8 @@ endpoint.
 * Jolokia: Jolokia enables exporting JMX over http, this has been used to expose all metrics that are JMX only.
 * Added Unit Test cases
 * Cucumber Tests: Added Cucumber integration tests that check both api endpoints to ascertain they do support our currency model and a conversion is possible using latest and historical dates. If anything changes on those apis, the tests will fail :)
+* Actuator Endpoints: https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html,
+also /management/currencies, /management/latest and /management/historical?date endpoints give you data about all currencies.
 
 ### CI / CD
 * Travis: On every commit, travis-ci will run a build (defined in .travis.yml) that compiles source-code, runs tests and
