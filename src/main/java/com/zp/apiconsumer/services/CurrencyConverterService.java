@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
 
+/**
+ * Currency Conversion service
+ */
 @Service
 public class CurrencyConverterService {
 
@@ -32,6 +35,11 @@ public class CurrencyConverterService {
     }
 
 
+    /**
+     * Returns supported currencies
+     *
+     * @return List of supported currencies
+     */
     @Retryable
     public CurrencyList getSupportedCurrencies() {
 
@@ -46,6 +54,12 @@ public class CurrencyConverterService {
     }
 
 
+    /**
+     * Returns historical currency rates
+     *
+     * @param date date of history
+     * @return List of currency rates
+     */
     @Retryable
     public CurrencyRates getHistoricalRates(String date) {
 
@@ -53,6 +67,14 @@ public class CurrencyConverterService {
     }
 
 
+    /**
+     * Returns historical currency rates
+     *
+     * @param date date of history
+     * @param from from currency
+     * @param to   to currency
+     * @return List of currency rates
+     */
     @Retryable
     @Cacheable(cacheNames = "currencies", unless = "#result == null")
     public CurrencyRates getHistoricalRates(Currency from, Currency to, String date) {
@@ -61,6 +83,11 @@ public class CurrencyConverterService {
     }
 
 
+    /**
+     * Returns latest rates
+     *
+     * @return rates of currency
+     */
     @Retryable
     @Cacheable(cacheNames = "currencies", unless = "#result == null")
     public CurrencyRates getLatestRates() {
@@ -69,6 +96,13 @@ public class CurrencyConverterService {
     }
 
 
+    /**
+     * Returns latest rates of given currencies.
+     *
+     * @param from from currency
+     * @param to   to currency
+     * @return rates of currencies
+     */
     @Retryable
     @Cacheable(cacheNames = "currencies", unless = "#result == null")
     public CurrencyRates getLatestRates(Currency from, Currency to) {

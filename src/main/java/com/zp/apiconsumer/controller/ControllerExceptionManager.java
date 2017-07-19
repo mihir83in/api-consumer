@@ -35,6 +35,13 @@ public class ControllerExceptionManager {
     }
 
 
+    /**
+     * Handles all exceptions and goes to error page.
+     *
+     * @param tw    throwable
+     * @param model spring model
+     * @return View of error
+     */
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Throwable.class)
     @Counted(name = Constants.METRIC_NAME_ERRORS, monotonic = true, absolute = true)
@@ -42,6 +49,6 @@ public class ControllerExceptionManager {
 
         log.error("Internal server error", tw);
         model.addAttribute("error", new ExceptionResponse(tw));
-        return "/error";
+        return "error";
     }
 }

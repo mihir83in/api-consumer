@@ -8,6 +8,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 
+/**
+ * User Details Service that provides user objects for authentication
+ */
 @Service
 public class UserPrincipalDetailsService implements UserDetailsService {
 
@@ -20,6 +23,9 @@ public class UserPrincipalDetailsService implements UserDetailsService {
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public UserDetails loadUserByUsername(String username) {
 

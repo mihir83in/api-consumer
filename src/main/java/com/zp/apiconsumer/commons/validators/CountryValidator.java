@@ -6,6 +6,9 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
+/**
+ * Validates Country name.
+ */
 public class CountryValidator implements ConstraintValidator<Country, String> {
 
     @Override
@@ -14,6 +17,13 @@ public class CountryValidator implements ConstraintValidator<Country, String> {
     }
 
 
+    /**
+     * Uses Locale countries to validate given country.
+     *
+     * @param country                    name of country
+     * @param constraintValidatorContext constraint validator context
+     * @return indication of country being valid.
+     */
     @Override
     public boolean isValid(String country, ConstraintValidatorContext constraintValidatorContext) {
 

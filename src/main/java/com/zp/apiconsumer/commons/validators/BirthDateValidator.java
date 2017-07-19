@@ -1,5 +1,7 @@
 package com.zp.apiconsumer.commons.validators;
 
+import com.zp.apiconsumer.constants.Constants;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Calendar;
@@ -7,6 +9,9 @@ import java.util.Date;
 import java.util.Optional;
 
 
+/**
+ * Validates BirthDate to logical valid bounds
+ */
 public class BirthDateValidator implements ConstraintValidator<BirthDate, Date> {
 
     @Override
@@ -15,6 +20,13 @@ public class BirthDateValidator implements ConstraintValidator<BirthDate, Date> 
     }
 
 
+    /**
+     * Validates birthdate to logical valid value bounds
+     *
+     * @param date                       date
+     * @param constraintValidatorContext constraints validation context
+     * @return wheather birthDate is valid or not.
+     */
     @Override
     public boolean isValid(Date date, ConstraintValidatorContext constraintValidatorContext) {
 
@@ -29,6 +41,6 @@ public class BirthDateValidator implements ConstraintValidator<BirthDate, Date> 
 
         int age = year - birthYear;
 
-        return age > 1 && age < 125;
+        return age > Constants.MIN_HUMAN_AGE && age < Constants.MAX_HUMAN_AGE;
     }
 }

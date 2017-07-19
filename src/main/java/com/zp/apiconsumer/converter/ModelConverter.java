@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 
+/**
+ * Converter between web and persistence models
+ */
 @Component
 public class ModelConverter {
 

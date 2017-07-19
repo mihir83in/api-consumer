@@ -8,6 +8,7 @@ import com.google.common.collect.Maps;
 import com.zp.apiconsumer.commons.Currency;
 import com.zp.apiconsumer.commons.model.api.CurrencyRates;
 import com.zp.apiconsumer.commons.model.api.ErrorResponse;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -15,8 +16,15 @@ import java.util.Iterator;
 import java.util.Map;
 
 
+/**
+ * De-serializes response into {@link CurrencyRates}
+ */
+@Slf4j
 public class CurrencyRatesDeserializer extends JsonDeserializer<CurrencyRates> {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CurrencyRates deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
 
@@ -33,9 +41,12 @@ public class CurrencyRatesDeserializer extends JsonDeserializer<CurrencyRates> {
             JsonNode error = node.get("error");
             int code = error.get("code").asInt();
             String msg = error.get("info").asText();
+
+            log.debug("Encountered error:{}", error);
             return new CurrencyRates(Maps.newHashMap(), new ErrorResponse(code, msg));
         }
 
+        log.debug("deserializing into currency list:{}", rates);
         Iterator<Map.Entry<String, JsonNode>> fields = rates.fields();
 
         while (fields.hasNext()) {

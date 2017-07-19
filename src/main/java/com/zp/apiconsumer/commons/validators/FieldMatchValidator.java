@@ -7,6 +7,9 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 
+/**
+ * Validates pair of fields for equality
+ */
 @Getter
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
 
@@ -22,6 +25,13 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
     }
 
 
+    /**
+     * Validates two fields for equality
+     *
+     * @param object                     object having two fields
+     * @param constraintValidatorContext constraint validator context
+     * @return true if both fields match
+     */
     @Override
     public boolean isValid(Object object, ConstraintValidatorContext constraintValidatorContext) {
 

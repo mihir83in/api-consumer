@@ -5,6 +5,9 @@ import com.zp.apiconsumer.commons.Currency;
 import javax.persistence.AttributeConverter;
 
 
+/**
+ * Jpa Converter for {@link Currency} Enum
+ */
 public class CurrencyConverter implements AttributeConverter<Currency, String> {
 
     @Override

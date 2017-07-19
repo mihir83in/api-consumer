@@ -12,10 +12,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
+/**
+ * Configuration of spring security
+ */
 @Configuration
 @EnableWebSecurity
 public class WebMvcConfiguration {
 
+    /**
+     * Web app configuration
+     */
     @Configuration
     public static class CurrencyConverter extends WebSecurityConfigurerAdapter {
 
@@ -38,6 +44,9 @@ public class WebMvcConfiguration {
     }
 
 
+    /**
+     * Management context path configuration
+     */
     @Configuration
     @Order(1)
     public static class ManagementSecurity extends WebSecurityConfigurerAdapter {
@@ -62,6 +71,11 @@ public class WebMvcConfiguration {
     }
 
 
+    /**
+     * Plain password storing in db is no-no, we use a Bcrypt password encoder
+     *
+     * @return Password Encoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
 

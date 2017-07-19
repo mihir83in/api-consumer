@@ -8,12 +8,17 @@ import org.springframework.boot.actuate.metrics.writer.MetricWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jmx.export.MBeanExporter;
-import org.springframework.web.client.RestTemplate;
 
 
 @Configuration
 public class MetricsConfiguration {
 
+    /**
+     * Needed to export all metrics to JMX
+     *
+     * @param exporter exporter
+     * @return Writer
+     */
     @Bean
     @ExportMetricWriter
     MetricWriter metricWriter(MBeanExporter exporter) {
@@ -22,6 +27,12 @@ public class MetricsConfiguration {
     }
 
 
+    /**
+     * Required to export all metrics to jmx, this reads metrics from /metrics
+     *
+     * @param metricsEndpoint autowired metricsEndpoint
+     * @return Reader
+     */
     @Bean
     public MetricsEndpointMetricReader metricsEndpointMetricReader(MetricsEndpoint metricsEndpoint) {
 

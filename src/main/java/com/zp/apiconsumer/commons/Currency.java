@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 
 
+/**
+ * Supported Currencies
+ */
 @AllArgsConstructor
 @Slf4j
 public enum Currency {
@@ -27,6 +30,12 @@ public enum Currency {
     }
 
 
+    /**
+     * Lookup currency by logical name
+     *
+     * @param name logical name
+     * @return Currency
+     */
     public static Currency fromName(String name) {
 
         try {
