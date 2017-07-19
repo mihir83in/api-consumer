@@ -1,8 +1,8 @@
 # Currency Converter
 
-On Heroku: https://currencyconv.herokuapp.com
-On Docker hub: https://hub.docker.com/r/mihir83in/currencyconverter/
-On Travis: https://travis-ci.org/mihir83in/api-consumer
+On Heroku: https://currencyconv.herokuapp.com 
+On Docker hub: https://hub.docker.com/r/mihir83in/currencyconverter/ 
+On Travis: https://travis-ci.org/mihir83in/api-consumer 
 
 Currency Converter is a hobby project that uses spring stack including spring-boot, spring-cloud-netflix, spring-retry etc.
 
