@@ -12,10 +12,10 @@ import org.springframework.context.annotation.FilterType;
 
 @ComponentScan(excludeFilters = @ComponentScan.Filter(value =
         { CurrencyLayerClientConfiguration.class, OxrClientConfiguration.class }, type = FilterType.ASSIGNABLE_TYPE))
-@SpringBootApplication(scanBasePackages = { "com.zp.apiconsumer.acceptance"})
+@SpringBootApplication(scanBasePackages = { "com.zp.apiconsumer.acceptance", "com.zp.apiconsumer.client"})
 @EnableConfigurationProperties
 @EnableAutoConfiguration
-@EnableFeignClients(basePackages = "com.zp.apiconsumer.acceptance")
+@EnableFeignClients(basePackages = {"com.zp.apiconsumer.acceptance", "com.zp.apiconsumer.client"})
 public class Application {
 
     static {

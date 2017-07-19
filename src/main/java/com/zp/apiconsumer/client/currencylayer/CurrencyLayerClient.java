@@ -33,6 +33,6 @@ public interface CurrencyLayerClient extends CurrencyClient {
     @Override
     default String getClientName() {
 
-        return "currencyLayerClient";
+        return "CurrencyLayerClient";
     }
 }

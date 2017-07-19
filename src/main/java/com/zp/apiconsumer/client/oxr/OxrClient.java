@@ -33,6 +33,6 @@ public interface OxrClient extends CurrencyClient {
     @Override
     default String getClientName() {
 
-        return "oxrClient";
+        return "OxrClient";
     }
 }
