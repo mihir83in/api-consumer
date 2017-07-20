@@ -2,6 +2,7 @@ package com.zp.apiconsumer.loadbalancer.rules;
 
 import com.zp.apiconsumer.client.CurrencyClient;
 import com.zp.apiconsumer.loadbalancer.LoadBalancerStats;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * An implementation that randomizes client selection
  */
 @Component
+@Slf4j
 public class RandomLoadBalancerRule implements LoadBalancerRule {
 
     /**
@@ -26,6 +28,8 @@ public class RandomLoadBalancerRule implements LoadBalancerRule {
     public CurrencyClient choose(List<CurrencyClient> converters, LoadBalancerStats loadBalancerStats) {
 
         CurrencyClient currencyClient = converters.get(ThreadLocalRandom.current().nextInt(0, converters.size()));
+
+        log.debug("chose:{}", currencyClient.getClientName());
 
         if (!Optional.ofNullable(loadBalancerStats.getLastClient()).isPresent()) {
 

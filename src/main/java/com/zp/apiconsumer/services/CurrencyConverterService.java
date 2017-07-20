@@ -7,6 +7,7 @@ import com.zp.apiconsumer.commons.model.api.CurrencyRates;
 import com.zp.apiconsumer.exception.ApiConsumerException;
 import com.zp.apiconsumer.loadbalancer.CurrencyClientLoadBalancer;
 import com.zp.apiconsumer.loadbalancer.LoadBalancerStats;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.metrics.dropwizard.DropwizardMetricServices;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.retry.annotation.Retryable;
@@ -18,6 +19,7 @@ import org.springframework.util.StopWatch;
  * Currency Conversion service
  */
 @Service
+@Slf4j
 public class CurrencyConverterService {
 
     private final LoadBalancerStats loadBalancerStats;
@@ -48,6 +50,7 @@ public class CurrencyConverterService {
         CurrencyClient client = getClient();
         CurrencyList supportedCurrencies = client.getSupportedCurrencies();
         stopWatch.stop();
+        log.debug("got suppportedCurrencies:{} with {}", supportedCurrencies, client.getClientName());
 
         metricServices.submit(getTimedMetricPrefix(client) + ".supportedCurrencies", stopWatch.getTotalTimeMillis());
         return supportedCurrencies;
@@ -118,6 +121,7 @@ public class CurrencyConverterService {
         CurrencyClient client = getClient();
         CurrencyRates historicalRates = client.getHistoricalRates(date, symbols);
         stopWatch.stop();
+        log.debug("got getHistoricalRates:{} with {}", historicalRates, client.getClientName());
         throwUp(historicalRates);
 
         metricServices.submit(getTimedMetricPrefix(client) + ".historical", stopWatch.getTotalTimeMillis());
@@ -132,6 +136,7 @@ public class CurrencyConverterService {
         CurrencyClient client = getClient();
         CurrencyRates latestRates = client.getLatestRates(symbols);
         stopWatch.stop();
+        log.debug("got getLatestRates:{} with {}", latestRates, client.getClientName());
         throwUp(latestRates);
 
         metricServices.submit(getTimedMetricPrefix(client) + ".latest", stopWatch.getTotalTimeMillis());

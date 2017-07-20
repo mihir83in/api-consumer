@@ -2,6 +2,7 @@ package com.zp.apiconsumer.loadbalancer;
 
 import com.zp.apiconsumer.client.CurrencyClient;
 import com.zp.apiconsumer.loadbalancer.rules.LoadBalancerRule;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Facade that other classes use to retrieve a client from load balancer.
  */
 @Service
+@Slf4j
 public class CurrencyClientLoadBalancer {
 
     private List<CurrencyClient> contracts;
@@ -25,6 +27,8 @@ public class CurrencyClientLoadBalancer {
         this.contracts = clients;
         this.loadBalancerRule = loadBalancerRule;
         singleServer = contracts.size() == 1;
+
+        log.debug("singleServer:{}", singleServer);
     }
 
 

@@ -7,6 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
+/**
+ * Service for {@link CurrencyUser} entity.
+ */
 @Service
 @Slf4j
 public class CurrencyUserService {
@@ -22,6 +25,11 @@ public class CurrencyUserService {
     }
 
 
+    /**
+     * Add a user into db
+     *
+     * @param currencyUser User to add
+     */
     public void addUser(CurrencyUser currencyUser) {
 
         currencyUser.setPassword(passwordEncoder.encode(currencyUser.getPassword()));

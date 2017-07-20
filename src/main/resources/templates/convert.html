@@ -46,7 +46,7 @@
                 </div>
             </td>
             <td>
-                <input type="date" th:field="*{date}" th:value="${{#dates.createNow()}}"/>
+                <input type="date" th:field="*{date}"/> (Optional, Leave blank for latest rates)
             </td>
             <td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">To Error</td>
         </tr>
