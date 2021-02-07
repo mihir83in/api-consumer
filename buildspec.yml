@@ -10,4 +10,4 @@ phases:
       - mvn clean package docker:build
 artifacts:
   files:
-    - '**/*.jar
+    - '**/*.jar'
