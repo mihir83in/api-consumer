@@ -7,4 +7,5 @@ phases:
   build:
     commands:
       - java -version
-      - mvn clean package
+      - mvn clean package docker:build -DskipTests
+
