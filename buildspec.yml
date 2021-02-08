@@ -11,9 +11,9 @@ phases:
     commands:
       - echo $DOCKER_EMAIL
       - echo $DOCKER_USERNAME
-#       - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-#       - java -version
-#       - mvn clean package docker:build -DskipTests
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - java -version
+      - mvn clean package docker:build -DskipTests
 artifacts:
   files:
     - 'target/service.jar'
