@@ -6,9 +6,9 @@ phases:
       java: corretto8
   build:
     commands:
-      - docker -v
-#      - java -version
-#      - mvn clean install -DskipTests
+      - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - java -version
+      - mvn clean package docker:build -DskipTests
 artifacts:
   files:
     - 'target/service.jar'
