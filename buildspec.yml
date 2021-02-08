@@ -6,8 +6,9 @@ phases:
       java: corretto8
   build:
     commands:
-      - java -version
-      - mvn clean install -DskipTests
+      - docker -v
+#      - java -version
+#      - mvn clean install -DskipTests
 artifacts:
   files:
     - 'target/service.jar'
