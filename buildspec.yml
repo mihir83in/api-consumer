@@ -7,13 +7,13 @@ phases:
   install:
     runtime-versions:
       java: corretto8
+  pre_build:
+    commands:
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   build:
     commands:
-      - echo $DOCKER_EMAIL
-      - echo $DOCKER_USERNAME
-      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - java -version
       - mvn clean package docker:build -DskipTests
+  pre_build:
+    commands:
       - docker push mihir83in/currencyconverter
       - docker logout
-
