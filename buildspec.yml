@@ -16,7 +16,4 @@ phases:
       - mvn clean package docker:build -DskipTests
       - docker push mihir83in/currencyconverter
       - docker logout
-artifacts:
-  files:
-    - 'target/service.jar'
 
