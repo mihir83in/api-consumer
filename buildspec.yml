@@ -7,5 +7,5 @@ phases:
   build:
     commands:
       - java -version
-      - mvn clean package -DskipTests
+      - mvn clean install -DskipTests
 
