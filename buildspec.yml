@@ -8,4 +8,7 @@ phases:
     commands:
       - java -version
       - mvn clean install -DskipTests
+ artifacts:
+  files:
+    - 'target/service.jar'
 
